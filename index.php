@@ -21,5 +21,5 @@
 	$result->free(); $mysqli->close();
 	*/
 
-	echo 'Hi Nesseya and Fengxi!';
+	echo 'Hi Nesseya and Fengxi!!!';
 ?>
