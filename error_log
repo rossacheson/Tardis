@@ -1,0 +1,6 @@
+[20-Nov-2015 13:30:21 America/Denver] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'demo'@'localhost' (using password: YES) in /home2/rdadesig/public_html/tardis/index.php on line 2
+[20-Nov-2015 13:30:21 America/Denver] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home2/rdadesig/public_html/tardis/index.php on line 5
+[20-Nov-2015 13:30:21 America/Denver] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home2/rdadesig/public_html/tardis/index.php on line 7
+[20-Nov-2015 14:16:29 America/Denver] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'rdadesig_test1'@'localhost' (using password: YES) in /home2/rdadesig/public_html/tardis/index.php on line 3
+[20-Nov-2015 14:16:29 America/Denver] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home2/rdadesig/public_html/tardis/index.php on line 9
+[20-Nov-2015 14:16:29 America/Denver] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home2/rdadesig/public_html/tardis/index.php on line 13
