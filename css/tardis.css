@@ -11,3 +11,11 @@ nav li {
 h2 {
 	padding-left: 10px;
 }
+
+body {
+    font-size: 160%;
+}
+
+nav {
+	font-size: 1.6em;
+}
