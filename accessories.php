@@ -42,6 +42,7 @@
 		</nav>
 	</header>
 	<section class="maincontent">
+		<h2>Accessories</h2>
 		<div class="product_list">
 			<?php
 			include("conn.php");
@@ -52,20 +53,18 @@
 			while($row=mysql_fetch_array($result))
 			{
 			?>
-			<table width="343" height="152" border="1"style="float:left">
+			<table border="1" class= "col-xs-12 col-sm-6 col-md-4">
 			  <tr>
 			   <td width="203"height="35"><?php echo  $row["name"] ?></td>
 			  </tr>
 			  <tr>
-			   <td height="28" align="center"><span style="color:red">$</span><?php echo "<font color=\"red\">" . $row["price"]  ?> <span style="color:white">$sfsdfsfgsdgfdg</span><a target="_blank" a href="buy.php?id=<?php echo $row["Product_ID"]?>&name=<?php
+			   <td>$<?php echo $row["price"]  ?> &nbsp &nbsp <a a href="buy.php?id=<?php echo $row["Product_ID"]?>&name=<?php
 			echo $row["name"]?>">
-					<img src="cart.png" height="39px" width="56px"/>
+					<img src="images/tardis_add_to_cart.png" height="40px" width="120px"/>
 				</a>
 			  </td>
 			  </tr>
-
-			  </table>
-
+			</table>
 			<?php
 			}
 			?>

@@ -19,3 +19,8 @@ body {
 nav {
 	font-size: 1.6em;
 }
+
+.product_list td {
+	padding: 10px;
+	text-align: center;
+}
