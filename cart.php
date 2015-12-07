@@ -61,7 +61,7 @@ $arr=$_SESSION["mycart"];
 			<tr>
 				<td width="158"><?php echo $a["name"]?></td>
 				<td width="154"><?php echo $a["num"]?>
-				<form name="form1" enctype="multipart/form-data" method="post" action="modify.php?id=<?php echo @$a[Product_ID]?>">
+				<form name="form1" enctype="multipart/form-data" method="post" action="modify.php?id=<?php echo @$a[product_ID]?>">
 					<label>
 						<select name="select">
 							<option value="1">1</option>
@@ -81,7 +81,7 @@ $arr=$_SESSION["mycart"];
 					</label>
 				</form>
 				</td>
-				<td width="177"><a href="delete.php?id=<?php echo @$a[Product_ID]?>">delete</a></td>
+				<td width="177"><a href="delete.php?id=<?php echo @$a[product_ID]?>">delete</a></td>
 			</tr>
 			<?php
 			}

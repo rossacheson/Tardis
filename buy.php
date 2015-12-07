@@ -18,12 +18,12 @@ $arr[$Product_ID]=$uu;
 }
 else
 {
-$arr[$Product_ID]=array("Product_ID"=>$Product_ID,"name"=>$name,"num"=>1);
+$arr[$Product_ID]=array("product_ID"=>$Product_ID,"name"=>$name,"num"=>1);
 }
 }
 else
 {
-$arr[$Product_ID]=array("Product_ID"=>$Product_ID,"name"=>$name,"num"=>1);
+$arr[$Product_ID]=array("product_ID"=>$Product_ID,"name"=>$name,"num"=>1);
 
 }
 

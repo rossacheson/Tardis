@@ -5,14 +5,19 @@ $ID=$_GET["id"];
 
 include("conn.php");
 	
-$query="select inventory_amt from inventory_amount where product_ID='$ID'";
+$query="select sum(inventory_amt) as inventory_sum from inventory_amount where product_ID='$ID'";
                
 /*echo $Product_ID;*/
 $result=mysql_query($query, $conn);
-while($row=mysql_fetch_array($result))
+if(!$result) {
+	die('Query Failed'. mysql_error());
+} 
+$inventory_number = mysql_result($result, 0);
+echo $inventory_number;
+/*while($row=mysql_fetch_array($result))
 {
   $inventory_number=$row["inventory_amt"];
-}
+}*/
 
 
 if( $inventory_number>=$_POST["select"])
@@ -23,7 +28,6 @@ ob_start();
 $number=$_POST["select"];
 
 $Product_ID=$_GET["id"];
-
 
 
 $arr=$_SESSION["mycart"];
@@ -44,7 +48,6 @@ ob_clean();
 header("location:cart.php");
 
 }
-
 
 else
 {

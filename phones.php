@@ -58,7 +58,7 @@
 			   <td width="203"height="35"><?php echo  $row["name"] ?></td>
 			  </tr>
 			  <tr>
-			   <td>$<?php echo $row["price"]  ?> &nbsp &nbsp <a a href="buy.php?id=<?php echo $row["Product_ID"]?>&name=<?php
+			   <td>$<?php echo $row["price"]  ?> &nbsp &nbsp <a a href="buy.php?id=<?php echo $row["product_ID"]?>&name=<?php
 			echo $row["name"]?>">
 					<img src="images/tardis_add_to_cart.png" height="40px" width="120px"/>
 				</a>
