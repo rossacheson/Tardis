@@ -3,13 +3,13 @@ include ("conn.php");
 session_start();
 ob_start();
 $arr_paycart=$_SESSION["mycart"];
-$customer_ID=$_POST("customer_ID");
-$salesperson_ID=$_POST("salesperson_ID");
+$customer_ID=$_POST["customer_ID"];
+$salesperson_ID=$_POST["salesperson_ID"];
 $date=date("Y/m/d");
 $get_transactionID="select MAX(transaction_ID) from transaction";
 $biggest_transactionID=mysql_query($get_transactionID, $conn);
-if($biggest_transactionID==null){
-    mysql_query("INSERT INTO transaction(transaction_ID,salesperson,customer_ID,date) VALUES (1,'{$salesperson_ID}','{$customer_ID}','{$date}')");
+if(mysql_num_rows($biggest_transactionID) == 0){
+    mysql_query("INSERT INTO transaction(transaction_ID,salesperson,customer_ID,date) VALUES (1,'$salesperson_ID','$customer_ID','$date')");
 }
 else{
     $transactionID_insert=$biggest_transactionID+1;
