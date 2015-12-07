@@ -15,7 +15,7 @@ $get_transactionID="select MAX(transaction_ID) from transaction";
 $biggest_transactionID=mysql_query($get_transactionID, $conn);
 
 if($biggest_transactionID==null){
-    mysql_query("INSERT INTO transaction(transaction_ID,salesperson,customer_ID,date) VALUES ('1','{$salesperson_ID}','{$customer_ID}','{$date}')");
+    mysql_query("INSERT INTO transaction(transaction_ID,salesperson,customer_ID,date) VALUES (1,'{$salesperson_ID}','{$customer_ID}','{$date}')");
 }
 else{
     $transactionID_insert=$biggest_transactionID+1;
@@ -43,7 +43,7 @@ while(empty($arr_paycart))
     $biggest_buyID=mysql_query($get_buyID, $conn);
     
     if($biggest_buyID==null){
-         mysql_query("INSERT INTO buy(transaction_ID,buy_ID,product_ID,price_paid,quantity) VALUES ('{$transactionID_insert}','1','{$Product_in_cart_ID}','{$product_paid}','{$Product_in_cart_num}')");
+         mysql_query("INSERT INTO buy(transaction_ID,buy_ID,product_ID,price_paid,quantity) VALUES ('{$transactionID_insert}',1,'{$Product_in_cart_ID}','{$product_paid}','{$Product_in_cart_num}')");
     }
     
     else{
