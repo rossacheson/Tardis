@@ -13,29 +13,24 @@ and open the template in the editor.
     <body>
         <div class="headline"><h1>Confirm your delivery options</h1></div>
         
-        <div class="PersonInfo"><form>
-                <div id="bc"><input type="radio" name="customer_type" value="business_customer" onclick="location='business_customer.html'"/>business customer</div>
-                <div id="fc"><input type="radio" name="customer_type" value="family_customer" onclick="location='family_customer.html'"/>family customer</div>
-            </form></div>
-        
         <div class="choose_store"><form action="show_store.php">
                 <div id="show_storeid"><input type="submit" value="Show_store" name="Show_stores" />show all stores</div>
             </form></div>
         
         <div class="store_option"><form action="Store.php" method="POST">
-                <div class="Store_Input"><input type="text" name="Store_ID" value="" />Choose a store ID</div>
+                <div class="Store_Input"><input type="text" name="store_ID" value="" />Choose a store ID</div>
                 <div class="Store_Input"><input type="submit" value="Confirm" name="Confirm" /></div>
                 <div class="Store_Input"><input type="reset" value="Clear" name="Clear" /></div>
             </form></div>
         
         <div id="SalespersonInfo"><form action="Salesperson.php" method="POST">
-                <div class="SalesPerson_Input"><input type="text" name="Salesperson_ID" value="" />Choose a salesperson</div>
+                <div class="SalesPerson_Input"><input type="text" name="salesperson_ID" value="" />Choose a salesperson</div>
                 <div class="SalesPerson_Input"><input type="submit" value="Confirm" name="Confirm" /></div>
                 <div class="SalesPerson_Input"><input type="reset" value="Clear" name="Clear" /></div>
             </form></div>
         
         <div class="PayInfo"><form action="Pay.php" method="POST">
-                <div class="pay_table"><input type="text" name="Customer_ID" value="" />Enter your Customer_ID</div>
+                <div class="pay_table"><input type="text" name="customer_ID" value="" />Enter your customer_ID</div>
                 <div class="pay_table"><input type="submit" value="Confirm" name="Confirm" /></div>
                 <div class="pay_table"><input type="reset" value="Clear" name="Clear" /></div>
             </form></div>
