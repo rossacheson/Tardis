@@ -1,8 +1,13 @@
+<?php
+session_start();
+$arr=$_SESSION["mycart"];
+?>
+
 <!DOCTYPE html>
 <html lang='en'>
   <head>
 	<meta charset="UTF-8">
-    <title>Tardis Electronics - TVs</title>
+    <title>Tardis Electronics - Cart</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/tardis.css">
 	<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-touch-icon-57x57.png">
@@ -42,33 +47,48 @@
 		</nav>
 	</header>
 	<section class="maincontent">
-		<h2>TVs</h2>
-		<div class="product_list">
+		<h2>Cart</h2>
+		<table width="600" height="37" border="1" class = "col-xs-12 col-lg-9">
+			<tr>
+				<td width="158">Name</td>
+				<td width="154">Number</td>
+				<td width="177">Delete</td>
+			</tr>
 			<?php
-			include("conn.php");
-
-			$sql="select * from product where product_kind='TV'";
-			$result=mysql_query($sql, $conn);
-
-			while($row=mysql_fetch_array($result))
+			foreach($arr as $a)
 			{
 			?>
-			<table border="1" class= "col-xs-12 col-sm-6 col-md-4">
-			  <tr>
-			   <td width="203"height="35"><?php echo  $row["name"] ?></td>
-			  </tr>
-			  <tr>
-			   <td>$<?php echo $row["price"]  ?> &nbsp &nbsp <a a href="buy.php?id=<?php echo $row["Product_ID"]?>&name=<?php
-			echo $row["name"]?>">
-					<img src="images/tardis_add_to_cart.png" height="40px" width="120px"/>
-				</a>
-			  </td>
-			  </tr>
-			</table>
+			<tr>
+				<td width="158"><?php echo $a["name"]?></td>
+				<td width="154"><?php echo $a["num"]?>
+				<form name="form1" enctype="multipart/form-data" method="post" action="modify.php?id=<?php echo @$a[Product_ID]?>">
+					<label>
+						<select name="select">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+						</select>
+					</label>
+					<label>
+						<input type="submit" name="Submit" value="modify">
+					</label>
+				</form>
+				</td>
+				<td width="177"><a href="delete.php?id=<?php echo @$a[Product_ID]?>">delete</a></td>
+			</tr>
 			<?php
 			}
 			?>
-		</div>
+			</table>
+			</form>
 	</section>
   </body>
 </html>
+

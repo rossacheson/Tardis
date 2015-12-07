@@ -42,13 +42,91 @@
 		</nav>
 	</header>
 	<section class="maincontent">
-		<h2>Products</h2>
-		<a href="laptops.php"><img src="images/laptops_v1.png" class ="producttile col-xs-12 col-sm-6 col-md-3 col-lg-3" alt="Laptops"/></a>
-		<a href="tvs.php"><img src="images/tvs_v1.png" class ="producttile col-xs-12 col-sm-6 col-md-3 col-lg-3" alt="Laptops"/></a>
-		<a href="phones.php"><img src="images/phones_v1.png" class ="producttile col-xs-12 col-sm-6 col-md-3 col-lg-3" alt="Laptops"/></a>
-		<a href="accessories.php"><img src="images/accessories_v1.png" class ="producttile col-xs-12 col-sm-6 col-md-3 col-lg-3" alt="Laptops"/></a>
+		<h2>Results</h2>
+		<?php
+include("conn.php");
+                
+                $brand=$_POST["key_word"];
+                $min_price=$_POST["min_price"];
+                $max_price=$_POST["max_price"];
+                $category=$_POST["category"];
+               
+
+	if ( $category== "" && $min_price=="" &&$max_price=="" && $brand=="")
+	{
+		die('Please provide input in select and from fields.');
+	}
+
+
+	
+	$queryString="select * from product where";
+	if ($category != "") {
+		$queryString .= "  product_kind='$category' ";                      
+	}
+          
+              if($max_price!= "" && $category =="")
+             {
+                        $queryString .=" price <= '$max_price' ";
+               }
+               if($max_price!= "" && $category !="")
+             {
+                        $queryString .=" and price <= '$max_price' ";
+               }
+                if($min_price!= "" && $max_price== "" && $category =="")
+             {
+                       
+                        $queryString .="  price >= '$min_price' ";
+                        
+                       
+               }
+           if($min_price!= "" &&( $max_price!= "" || $category !=""))
+             {
+                           if($min_price!="" && $max_price!="")
+                              {
+                            if($min_price<=$max_price)
+                       {
+                        $queryString .=" and price >= '$min_price' ";
+                        }
+                         else
+                         {     die('min price is larger than max price');
+                          }
+                         }
+                           else  
+                              {   $queryString .=" and price >= '$min_price' ";}
+               }
+                if($brand!= ""&& $max_price== "" && $min_price== "" && $category =="")
+             {
+                        $queryString .="  name like '%" .$brand. "%'";
+               }
+           if($brand!= ""&& ($max_price!= "" || $min_price!= "" || $category !=""))
+             {
+                        $queryString .=" and name like '%" .$brand. "%'";
+               }
+
+	
+$result=mysql_query($queryString, $conn);
+
+
+while($row=mysql_fetch_array($result))
+			{
+			?>
+			<table border="1" class= "col-xs-12 col-sm-6 col-md-4">
+			  <tr>
+			   <td><?php echo  $row["name"] ?></td>
+			  </tr>
+			  <tr>
+			   <td>$<?php echo $row["price"]  ?> &nbsp &nbsp <a a href="buy.php?id=<?php echo $row["Product_ID"]?>&name=<?php
+			echo $row["name"]?>">
+					<img src="images/tardis_add_to_cart.png" height="40px" width="120px"/>
+				</a>
+			  </td>
+			  </tr>
+			</table>
+			<?php
+			}
+			?>
 	</section>
-	<section class = "search">
+	<section class = "search col-xs-12">
 		<h2>Search</h2>
 		<form name="queryInput" action="runsearch.php" method="POST">
 			<table>

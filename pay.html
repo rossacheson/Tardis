@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Pay</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="headline"><h1>Confirm your delivery options</h1></div>
+        
+        <div class="PersonInfo"><form>
+                <div id="bc"><input type="radio" name="customer_type" value="business_customer" onclick="business_customer.html"/></div>
+                <div id="fc"><input type="radio" name="customer_type" value="family_customer" onclick="family_customer.html"/></div>
+            </form></div>
+        
+        <div class="store_option"><form action="Store.php" method="POST">
+                <div class="Store_Input"><input type="text" name="Store_ID" value="" /></div>
+                <div class="Store_Input"><input type="submit" value="Confirm" name="Confirm" /></div>
+                <div class="Store_Input"><input type="reset" value="Clear" name="Clear" /></div>
+            </form></div>
+        
+        <div id="SalespersonInfo"><form action="Salesperson.php" method="POST">
+                <div class="SalesPerson_Input"><input type="text" name="Salesperson_ID" value="" /></div>
+                <div class="SalesPerson_Input"><input type="submit" value="Confirm" name="Confirm" /></div>
+                <div class="SalesPerson_Input"><input type="reset" value="Clear" name="Clear" /></div>
+            </form></div>
+        
+        <div class="PayInfo"><form action="Pay.php" method="POST">
+                <div class="pay_table"><input type="text" name="Customer_ID" value="" /></div>
+                <div class="pay_table"><input type="submit" value="Confirm" name="Confirm" /></div>
+                <div class="pay_table"><input type="reset" value="Clear" name="Clear" /></div>
+            </form></div>
+
+        
+        
+        
+    </body>
+</html>

@@ -2,7 +2,7 @@
 <html lang='en'>
   <head>
 	<meta charset="UTF-8">
-    <title>Tardis Electronics</title>
+    <title>Tardis Electronics - Laptops</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/tardis.css">
 	<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-touch-icon-57x57.png">

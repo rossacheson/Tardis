@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Business Customers</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="headline"><h1>Business Customers</h1></div>
+        
+        <div class="bc_table"><form action="business_customer.php" method="POST">
+                <div class="bc_input"><input type="text" name="Customer_ID" value="" /></div>
+                <div class="bc_input"><input type="text" name="name" value="" /></div>
+                <div class="bc_input"><input type="text" name="business_category" value="" /></div>
+                <div class="bc_input"><input type="text" name="company_gross_annual_income" value="" /></div>
+                <div class="bc_input"><input type="submit" value="Confirm" name="Confirm" /></div>
+                <div class="bc_input"><input type="reset" value="Clear" name="Clear" /></div>
+            </form></div>
+        
+        <div class="adress_table"><form action="Customer_address.php" method="POST">
+                <div class="adress_input"><input type="text" name="Customer_ID" value="" /></div>
+                <div class="adress_input"><input type="text" name="street" value="" /></div>
+                <div class="adress_input"><input type="text" name="city" value="" /></div>
+                <div class="adress_input"><input type="text" name="state" value="" /></div>
+                <div class="adress_input"><input type="text" name="zipcode" value="" /></div>
+                <div class="adress_input"><input type="submit" value="Confirm" name="Confirm" /></div>
+            </form></div>
+        
+    </body>
+</html>
