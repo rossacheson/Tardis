@@ -2,7 +2,7 @@
 <html lang='en'>
   <head>
 	<meta charset="UTF-8">
-    <title>Tardis Electronics Admin Page</title>
+    <title>Tardis Electronics - Add Business</title>
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="../css/tardis.css">
 	<link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-touch-icon-57x57.png">
@@ -40,6 +40,38 @@
 		</nav>
 	</header>
 	<section class="maincontent">
+		<h2>Add a Business Customer</h2>
+		<form action="business_customer.php" method="POST" class = "add_cust">
+			<dl>
+			 <dt>Customer ID: </dt>
+			   <dd><input type="text" name="customer_ID" required/></dd>
+			 <dt>Name: </dt>
+			   <dd><input type="text" name="name" required/></dd>
+			 <dt>Business Category: </dt>
+			   <dd><input type="text" name="business_category" required/></dd>
+			 <dt>Gross Annual Income: </dt>
+			   <dd><input type="text" name="company_gross_annual_income" required/></dd>
+			</dl>
+            <input type="submit" value="Confirm" name="confirm" />
+            <input type="reset" value="Clear" name="clear" />
+        </form>
+		<h2>Add a Business Customer Address</h2>
+		<form action="customer_address.php" method="POST" class = "add_cust_address">
+			<dl>
+			 <dt>Customer ID: </dt>
+			   <dd><input type="text" name="customer_ID" required/></dd>
+			 <dt>Street: </dt>
+			   <dd><input type="text" name="street" required/></dd>
+			 <dt>City: </dt>
+			   <dd><input type="text" name="city" required/></dd>
+			 <dt>State: </dt>
+			   <dd><input type="text" name="state" required/></dd>
+			 <dt>Zipcode: </dt>
+			   <dd><input type="text" name="zipcode" required/></dd>
+			</dl>
+            <input type="submit" value="Confirm" name="confirm" />
+            <input type="reset" value="Clear" name="clear" />
+        </form>
 	</section>
   </body>
 </html>
