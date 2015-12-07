@@ -13,7 +13,7 @@ if(!$result) {
 	die('Query Failed'. mysql_error());
 } 
 $inventory_number = mysql_result($result, 0);
-echo $inventory_number;
+//echo $inventory_number;
 /*while($row=mysql_fetch_array($result))
 {
   $inventory_number=$row["inventory_amt"];
@@ -51,9 +51,8 @@ header("location:cart.php");
 
 else
 {
-echo "sorry, only ";
-echo $_POST["select"];;
-echo " left in stock";
+echo "<p>Sorry, you selected ",$_POST["select"]," units, but we only have $inventory_number in stock</p>";
+echo "<a href='cart.php'>Back to cart</a>";
 }
 
 ?>
