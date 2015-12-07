@@ -19,7 +19,7 @@ if($biggest_transactionID==null){
 }
 else{
     $transactionID_insert=$biggest_transactionID+1;
-    mysql_query("INSERT INTO transaction(transaction_ID,salesperson,customer_ID,date) VALUES ('{$transactionID_insert}','{$salesperson_ID}','{$customer_ID}','{$date}')");   
+    mysql_query("INSERT INTO transaction(transaction_ID,salesperson,customer_ID,date) VALUES ({$transactionID_insert},'{$salesperson_ID}','{$customer_ID}','{$date}')");   
 }
 
 global $total_money;
@@ -43,12 +43,12 @@ while(empty($arr_paycart))
     $biggest_buyID=mysql_query($get_buyID, $conn);
     
     if($biggest_buyID==null){
-         mysql_query("INSERT INTO buy(transaction_ID,buy_ID,product_ID,price_paid,quantity) VALUES ('{$transactionID_insert}',1,'{$Product_in_cart_ID}','{$product_paid}','{$Product_in_cart_num}')");
+         mysql_query("INSERT INTO buy(transaction_ID,buy_ID,product_ID,price_paid,quantity) VALUES ({$transactionID_insert},1,'{$Product_in_cart_ID}','{$product_paid}','{$Product_in_cart_num}')");
     }
     
     else{
         $buyID_insert=$biggest_buyID+1;
-         mysql_query("INSERT INTO buy(transaction_ID,buy_ID,product_ID,price_paid,quantity) VALUES ('{$transactionID_insert}','{$buyID_insert}','{$Product_in_cart_ID}','{$product_paid}','{$Product_in_cart_num}')");
+         mysql_query("INSERT INTO buy(transaction_ID,buy_ID,product_ID,price_paid,quantity) VALUES ({$transactionID_insert},{$buyID_insert},'{$Product_in_cart_ID}','{$product_paid}','{$Product_in_cart_num}')");
     }
 
 }
