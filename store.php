@@ -17,6 +17,3 @@ while($row = mysql_fetch_array($salesperson_result))
 
 ?>
 
-
-
-
