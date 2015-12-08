@@ -42,23 +42,30 @@
 		</nav>
 	</header>
 	<section class="maincontent">
-		<h1>Checkout</h1>
-		<h2>Confirm Your Delivery Options</h2>
+		<h1><div style='text-align:center'>Checkout</div> </h1>
+		<h2><div style='text-align:center'>Confirm Your Delivery Options</div> </h2>
         <div class="choose_store"><form action="show_store.php">
-                <div id="show_storeid"><input type="submit" value="Show Store IDs" name="Show_stores" />show all stores</div>
+		<dl>
+		<dt>
+                <div style='text-align:center'><div id="show_storeid"><input type="submit" value="Show Store IDs" name="Show_stores" /></div></div>
+			<dt>	
+		<dl>
             </form></div>
-        
+        <dl>
         <div class="store_option"><form action="store.php" method="POST">
-                <div class="Store_Input"><input type="text" name="store_ID" />Choose a store ID</div>
-                <div class="Store_Input"><input type="submit" value="Confirm" name="Confirm" /></div>
-                <div class="Store_Input"><input type="reset" value="Clear" name="Clear" /></div>
+                 <div style='text-align:center'>Choose a store ID:</div>
+				 <div style='text-align:center'><div class="Store_Input"><input type="text" name="store_ID" /></div></div>
+                <div style='text-align:center'><div class="Store_Input"><input type="submit" value="Confirm" name="Confirm" /> <input type="reset" value="Clear" name="Clear" /></div></div>
+                
             </form></div>
-        
+        </dl>
         <div class="PayInfo"><form action="pay.php" method="POST">
-                <div class="pay_table"><input type="text" name="customer_ID" value="" />Enter your customer_ID</div>
-                <div class="pay_table"><input type="text" name="salesperson_ID" value=""/>Enter the id of the salesperson</div>
-                <div class="pay_table"><input type="submit" value="Confirm" name="Confirm" /></div>
-                <div class="pay_table"><input type="reset" value="Clear" name="Clear" /></div>
+		 <div style='text-align:center'>Enter your customer_ID:</div>
+                <div style='text-align:center'><div class="pay_table"> <input type="text" name="customer_ID" value="" /></div></div>
+				<div style='text-align:center'>Enter the id of the salesperson:</div>
+                <div style='text-align:center'><div class="pay_table"><input type="text" name="salesperson_ID" value=""/></div></div>
+                 <div style='text-align:center'><div class="pay_table"><input type="submit" value="Confirm" name="Confirm" /> <input type="reset" value="Clear" name="Clear" /></div></div>
+                
             </form></div>
 	</section>
   </body>
