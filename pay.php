@@ -44,7 +44,7 @@
 	<section class="maincontent">
 		<?php
 			include ("conn.php");
-			echo "sfe";
+			//echo "sfe";
 
 			$customer_ID=$_POST["customer_ID"];
 			echo $customer_ID;
