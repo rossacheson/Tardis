@@ -1,8 +1,6 @@
-
 <?php
-
+$type_number=$_POST["select1"]*100+$_POST["select2"]*10+$_POST["select3"];
 $ID=$_GET["id"];
-
 include("conn.php");
 	
 $query="select sum(inventory_amt) as inventory_sum from inventory_amount where product_ID='$ID'";
@@ -18,18 +16,12 @@ $inventory_number = mysql_result($result, 0);
 {
   $inventory_number=$row["inventory_amt"];
 }*/
-
-
-if( $inventory_number>=$_POST["select"])
+if( $inventory_number>=$type_number)
 {
 session_start();
 ob_start();
-
-$number=$_POST["select"];
-
+$number=$type_number;
 $Product_ID=$_GET["id"];
-
-
 $arr=$_SESSION["mycart"];
 foreach($arr as$key=>$proId)
 {
@@ -39,20 +31,15 @@ $uu=$arr[$Product_ID];
 $uu["num"]=$number;
 $arr[$Product_ID]=$uu;
 }
-
 }
-
 echo $uu["num"];
 $_SESSION["mycart"]=$arr;
 ob_clean();
 header("location:cart.php");
-
 }
-
 else
 {
 echo "<p>Sorry, you selected ",$_POST["select"]," units, but we only have $inventory_number in stock</p>";
 echo "<a href='cart.php'>Back to cart</a>";
 }
-
 ?>
