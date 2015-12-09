@@ -34,6 +34,8 @@
 			<ul>
 			  <li><a href="../index.html">Customer Site</a></li>
 			  <li><a href="add.html">Inventory</a></li>
+			  <li><a href="business_customer.html">Add Business</a></li>
+			  <li><a href="family_customer.html">Add Family</a></li>
 			</ul>
 		</nav>
 	</header>
