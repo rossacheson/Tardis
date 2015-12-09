@@ -46,20 +46,28 @@
 
 		//ob_start();
 
-		$customer_ID=$_POST["customer_ID"]; 
+	$customer_ID=$_POST["customer_ID"]; 
 		$name=$_POST["name"];
 		$marriage_status=$_POST["marriage_status"];
 		$gender=$_POST["gender"];
+		if($gender !='female' && $gender!='male')
+		{
+			die( "you can only type \"female\" or \"male\"");
+		}
 		$age_str=$_POST["age"];
+		if($age_str >=120)
+		{
+			die( "Hello, grandmom, please try again");
+		}
 		$income_str=$_POST["income"];
 
 		$age=(int)$age_str;
 		$income=(float)$income_str;
 
-		$customer_check="select * from customer where customer_ID =".$customer_ID;
+		$customer_check="select * from customer where customer_ID ='$customer_ID'";
 		$result=mysql_query($customer_check, $conn);
 
-		if($result!=null){
+		if($result){
 			echo "A customer with the username $customer_ID already exists!!";
 		}
 
@@ -70,7 +78,7 @@
 		}
 
 		//ob_clean();
-		mysql_close($conn);   
+		mysql_close($conn); 
 		?>
 	</section>
   </body>
