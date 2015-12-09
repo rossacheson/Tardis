@@ -1,5 +1,25 @@
 <?php
 
+$Product_ID=$_GET['id'];
+include("conn.php");
+	
+$query="select inventory_amt  from inventory_amount where product_ID='$Product_ID'";
+
+$result=mysql_query($query, $conn);
+if(!$result) {
+	die('Query Failed'. mysql_error());
+} 
+$inventory_number = mysql_result($result, 0);
+if( $inventory_number==0)
+{
+	echo "Sorry, out of stock. ";
+	echo "<p>Find more attracting product at here <a href='cart.php'>Back to cart</a></p>";
+}
+	
+
+
+
+
 session_start();
 ob_start();
 
