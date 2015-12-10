@@ -54,11 +54,9 @@ if(!$customer_ID)
 
     $get_cusID="select * from customer where customer_ID='$customer_ID'";
     $cus_ID=mysql_query($get_cusID, $conn);
-	
-	if(!$cus_ID)
+	if(mysql_num_rows($cus_ID) == 0)
 	{
-		  echo "<P><a href='index.html'>Back to homepage</a></p>";
-			die( "We do not have this customer in our records");
+			die( "<p>We do not have this customer in our records.</p><p><a href='index.html'>Back to homepage</a></p>");
 		}
 		
 $transaction_insert=1;
@@ -110,7 +108,7 @@ foreach ($arr as $a) {
     $price="select price from product where product_ID ='$Product_in_cart_ID'";
 	
     $price_paid=mysql_query($price, $conn);
-  while($row=mysql_fetch_array($price_paid))
+	while($row=mysql_fetch_array($price_paid))
 			{
 				$price_transaction=$row["price"];
 			}
