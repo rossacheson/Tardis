@@ -50,7 +50,7 @@ $customer_ID=$_POST["customer_ID"];
 if(!$customer_ID)
 {
 	echo "<P><a href='index.html'>Back to homepage</a></p>";
-		die ("please type you ID" );
+		die ("Please type you ID" );
 
 }
 
@@ -60,12 +60,10 @@ if(!$customer_ID)
 	if(!$cus_ID)
 	{
 		  echo "<P><a href='index.html'>Back to homepage</a></p>";
-			die( "we do not have this customer");
+			die( "We do not have this customer in our records");
 		}
 		
 		
-
-
 $transaction_insert=1;
 
 $salesperson_ID=$_POST["salesperson_ID"];
@@ -86,11 +84,7 @@ if(!$salesperson_ID)
 		}
 
 
-
-
 $systemdate=DATE("Y/m/d");
-
-
 
 
   $get_transactionID="select max(transaction_ID) as max_transaction from transaction ";
@@ -107,16 +101,11 @@ $systemdate=DATE("Y/m/d");
 				
 	}
 
-
-		
 			
 session_start();
 ob_start();
 $arr=$_SESSION["mycart"];
 
-
-
-			
 $total_money=0;
 
 foreach ($arr as $a) {
@@ -130,14 +119,10 @@ foreach ($arr as $a) {
   while($row=mysql_fetch_array($price_paid))
 			{
 				$price_transaction=$row["price"];
-
 			}
   
-  
-    
     $product_paid=$price_transaction*$Product_in_cart_num;
     $total_money=$total_money+$product_paid;
-	
     
     $get_buyID="select max(buy_ID) as max_buy from buy ";
     $buy_ID=mysql_query($get_buyID, $conn);
@@ -145,27 +130,23 @@ foreach ($arr as $a) {
 	while($row=mysql_fetch_array($buy_ID))
 			{
 				$buy_number=$row["max_buy"];
-    echo  $buy_number;
+				echo  $buy_number;
 			}
 			$buy_insert=$buy_number+1;
 	if($total_money)
 	{
-		
-		
     mysql_query("INSERT INTO buy(buy_ID,product_ID,price_paid,quantity) VALUES ($buy_insert,'$Product_in_cart_ID','$price_transaction','$Product_in_cart_num')");
-
     
     mysql_query("INSERT INTO transaction(transaction_ID, buy_ID,salesperson,customer_ID,date) VALUES ($transaction_insert,$buy_insert,'$salesperson_ID','$customer_ID','$systemdate')");
 	}
 }
 
-
 session_destroy();
 ob_clean();
 if($total_money==0)
 {
-	echo "you do not choose anything";
-	 echo "<P><a href='index.html'>Back to homepage</a></p>";
+	echo "You did have any products in your cart";
+	echo "<P><a href='index.html'>Back to homepage</a></p>";
 }
 if($total_money!=0)
 {
@@ -173,26 +154,8 @@ if($total_money!=0)
     echo "<P><a href='index.html'>Back to homepage</a></p>";
 }
 
-
 ?>
-
-
-
-
-
-
-
-
 
 	</section>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
