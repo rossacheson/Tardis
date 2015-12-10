@@ -57,7 +57,7 @@
 		$age_str=$_POST["age"];
 		if($age_str >=120)
 		{
-			die( "Hello, grandmom, please try again");
+			die( "Hello, grandmom, we'll need proof of your age.");
 		}
 		$income_str=$_POST["income"];
 
@@ -67,10 +67,9 @@
 		$customer_check="select * from customer where customer_ID ='$customer_ID'";
 		$result=mysql_query($customer_check, $conn);
 
-		if($result){
+		if(mysql_num_rows($result) != 0){
 			echo "A customer with the username $customer_ID already exists!!";
 		}
-
 		else{
 			mysql_query("INSERT INTO customer(customer_ID,name) VALUES ('$customer_ID','$name')");
 			mysql_query("INSERT INTO family_customer(customer_ID,marriage_status,gender,age,income) VALUES ('$customer_ID','$marriage_status','$gender','$age','$income')");

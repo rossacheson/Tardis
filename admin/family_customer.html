@@ -47,10 +47,22 @@
 			   <dd><input type="text" name="customer_ID" required/></dd>
 			 <dt>Name: </dt>
 			   <dd><input type="text" name="name" required/></dd>
-			 <dt>Marriage Status: </dt>
-			   <dd><input type="text" name="marriage_status" required/></dd>
-			 <dt>Gender: </dt>
-			   <dd><input type="text" name="gender" required/></dd>
+			 <dt><label for="marriage_status">Marriage Status: </label></dt>
+			   <dd>
+				<select name="marriage_status" id ="marriage_status">
+					<option>single</option>
+					<option>married</option>
+					<option>unspecified</option>
+				</select>
+			   </dd>
+			 <dt><label for="gender">Gender: </label></dt>
+			   <dd>
+				<select name="gender" id ="gender">
+					<option>female</option>
+					<option>male</option>
+					<option>unspecified</option>
+				</select>
+			   </dd>
 			 <dt>Age: </dt>
 			   <dd><input type="text" name="age" required/></dd>
 			 <dt>Income: </dt>
