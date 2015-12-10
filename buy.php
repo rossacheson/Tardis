@@ -3,7 +3,7 @@
 $Product_ID=$_GET['id'];
 include("conn.php");
 	
-$query="select inventory_amt  from inventory_amount where product_ID='$Product_ID'";
+$query="select inventory_amt from inventory_amount where product_ID='$Product_ID'";
 
 $result=mysql_query($query, $conn);
 if(!$result) {
@@ -12,13 +12,10 @@ if(!$result) {
 $inventory_number = mysql_result($result, 0);
 if( $inventory_number==0)
 {
-	echo "Sorry, out of stock. ";
-	echo "<p>Find more attracting product at here <a href='cart.php'>Back to cart</a></p>";
+	echo "<p>Sorry, out of stock. Try purchasing another product.</p>";
+	echo "<p><a href='cart.php'>Back to cart</a></p>";
 }
 	
-
-
-
 
 session_start();
 ob_start();
@@ -44,7 +41,6 @@ $arr[$Product_ID]=array("product_ID"=>$Product_ID,"name"=>$name,"num"=>1);
 else
 {
 $arr[$Product_ID]=array("product_ID"=>$Product_ID,"name"=>$name,"num"=>1);
-
 }
 
 $_SESSION["mycart"]=$arr;

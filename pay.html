@@ -42,31 +42,38 @@
 		</nav>
 	</header>
 	<section class="maincontent">
-		<h1><div style='text-align:center'>Checkout</div> </h1>
-		<h2><div style='text-align:center'>Confirm Your Delivery Options</div> </h2>
-        <div class="choose_store"><form action="show_store.php">
-		<dl>
-		<dt>
-                <div style='text-align:center'><div id="show_storeid"><input type="submit" value="Show Store IDs" name="Show_stores" /></div></div>
-			<dt>	
-		<dl>
-            </form></div>
-        <dl>
-        <div class="store_option"><form action="store.php" method="POST">
-                 <div style='text-align:center'>Choose a store ID:</div>
-				 <div style='text-align:center'><div class="Store_Input"><input type="text" name="store_ID" /></div></div>
-                <div style='text-align:center'><div class="Store_Input"><input type="submit" value="Confirm" name="Confirm" /> <input type="reset" value="Clear" name="Clear" /></div></div>
-                
-            </form></div>
-        </dl>
-        <div class="PayInfo"><form action="pay.php" method="POST">
-		 <div style='text-align:center'>Enter your customer_ID:</div>
-                <div style='text-align:center'><div class="pay_table"> <input type="text" name="customer_ID" value="" /></div></div>
-				<div style='text-align:center'>Enter the id of the salesperson:</div>
-                <div style='text-align:center'><div class="pay_table"><input type="text" name="salesperson_ID" value=""/></div></div>
-                 <div style='text-align:center'><div class="pay_table"><input type="submit" value="Confirm" name="Confirm" /> <input type="reset" value="Clear" name="Clear" /></div></div>
-                
-            </form></div>
+		<h1>Checkout</h1>
+		<div id="confirm_purchase">
+		<h2>Complete Your Purchase</h2>
+		<p>To complete your purchase, please enter your customer_ID and the ID of your salesperson.<br>
+		After you press 'Confirm' we will charge your credit card which we have on file.</p>
+		<form action="pay.php" method="POST">
+			<dl>
+				 <dt>Enter your customer_ID: </dt>
+				   <dd><input type="text" name="customer_ID" value="" required/></dd>
+				 <dt>Enter the id of your salesperson:</dt>
+				   <dd><input type="text" name="salesperson_ID" value="" required/></dd>
+			</dl>
+			<input type="submit" value="Confirm" name="Confirm" /> 
+			<input type="reset" value="Clear" name="Clear" />
+        </form>
+		</div>
+		<h3>Salesperson Lookup</h3>
+		<p>If you want to find the salespersons who work at your store, enter a store ID then click Show Salespersons
+        <form action="store.php" method="POST">
+			<dl>
+			 <dt>Enter a Store ID: </dt>
+			   <dd><input type="text" name="store_ID" required/></dd>
+			</dl>
+			<input type="submit" value="Show Salespersons" name="Confirm" />
+        </form>
+		<br>
+		<h3>Store Lookup</h3>
+		<p>If you don't know your Store, click Show Store IDs</p>
+        <form action="show_store.php">
+           <input id="show_storeid" type="submit" value="Show Store IDs" name="Show_stores" />
+        </form>
+		<br>
 	</section>
   </body>
 </html>

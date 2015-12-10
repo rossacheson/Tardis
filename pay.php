@@ -45,16 +45,14 @@
 		<?php
 include ("conn.php");
 
-
 $customer_ID=$_POST["customer_ID"];
 if(!$customer_ID)
 {
-	echo "<P><a href='index.html'>Back to homepage</a></p>";
-		die ("Please type you ID" );
-
+	echo "<p><a href='index.html'>Back to homepage</a></p>";
+		die ("Please type your ID" );
 }
 
-    $get_cusID="select *  from customer where customer_ID='$customer_ID'";
+    $get_cusID="select * from customer where customer_ID='$customer_ID'";
     $cus_ID=mysql_query($get_cusID, $conn);
 	
 	if(!$cus_ID)
@@ -62,7 +60,6 @@ if(!$customer_ID)
 		  echo "<P><a href='index.html'>Back to homepage</a></p>";
 			die( "We do not have this customer in our records");
 		}
-		
 		
 $transaction_insert=1;
 
@@ -74,7 +71,6 @@ if(!$salesperson_ID)
 
 }
 
-
  $get_saID="select * from employee where job_title='Salesperson' and employee_ID='$salesperson_ID' ";
     $sa_ID=mysql_query($get_saID, $conn);
 	if(!$sa_ID)
@@ -83,22 +79,19 @@ if(!$salesperson_ID)
 			die( "we do not have this salesperson");
 		}
 
-
 $systemdate=DATE("Y/m/d");
 
-
-  $get_transactionID="select max(transaction_ID) as max_transaction from transaction ";
-    $transaction_ID=mysql_query($get_transactionID, $conn);
+  $get_transactionID="select max(transaction_ID) as max_transaction from transaction";
+  $transaction_ID=mysql_query($get_transactionID, $conn);
 	/*$sdf=$transaction_ID+1;*/
 
-		while($row=mysql_fetch_array($transaction_ID))
+	while($row=mysql_fetch_array($transaction_ID))
 	{
 		if($row["max_transaction"])
 		{
-				$transaction_number=$row["max_transaction"];
+			$transaction_number=$row["max_transaction"];
 			$transaction_insert=$transaction_number+1;
 	    }
-				
 	}
 
 			
@@ -107,6 +100,7 @@ ob_start();
 $arr=$_SESSION["mycart"];
 
 $total_money=0;
+$total_items=0;
 
 foreach ($arr as $a) {
     $Product_in_cart_ID=$a["product_ID"];
@@ -120,7 +114,7 @@ foreach ($arr as $a) {
 			{
 				$price_transaction=$row["price"];
 			}
-  
+	$total_items=$total_items+$Product_in_cart_num;
     $product_paid=$price_transaction*$Product_in_cart_num;
     $total_money=$total_money+$product_paid;
     
@@ -133,12 +127,11 @@ foreach ($arr as $a) {
 				echo  $buy_number;
 			}
 			$buy_insert=$buy_number+1;
-	if($total_money)
+	if($total_money>0)
 	{
-    mysql_query("INSERT INTO buy(buy_ID,product_ID,price_paid,quantity) VALUES ($buy_insert,'$Product_in_cart_ID','$price_transaction','$Product_in_cart_num')");
-    
-    mysql_query("INSERT INTO transaction(transaction_ID, buy_ID,salesperson,customer_ID,date) VALUES ($transaction_insert,$buy_insert,'$salesperson_ID','$customer_ID','$systemdate')");
-	}
+	mysql_query("INSERT INTO transaction(transaction_ID,salesperson,customer_ID,date) VALUES ($transaction_insert,'$salesperson_ID','$customer_ID','$systemdate')");
+    mysql_query("INSERT INTO buy(buy_ID,transaction_ID,product_ID,price_paid,quantity) VALUES ($buy_insert,$transaction_insert,'$Product_in_cart_ID','$price_transaction','$Product_in_cart_num')");
+    }
 }
 
 session_destroy();
@@ -150,7 +143,7 @@ if($total_money==0)
 }
 if($total_money!=0)
 {
-	echo "The total money to pay is {$total_money} dollars";
+	echo "You ordered $total_items items for $total_money dollars";
     echo "<P><a href='index.html'>Back to homepage</a></p>";
 }
 
