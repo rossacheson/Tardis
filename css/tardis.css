@@ -36,3 +36,11 @@ td {
 #confirm_purchase {
 	text-align:center;
 }
+
+#secret_link {
+	text-align:center;
+}
+	
+#secret_link a{
+	color: #fff;
+}
