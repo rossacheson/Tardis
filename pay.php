@@ -71,11 +71,15 @@ if(!$salesperson_ID)
 
  $get_saID="select * from employee where job_title='Salesperson' and employee_ID='$salesperson_ID' ";
     $sa_ID=mysql_query($get_saID, $conn);
-	if(!$sa_ID)
+	if(mysql_num_rows($sa_ID) == 0)
 	{
 		echo "<P><a href='index.html'>Back to homepage</a></p>";
-			die( "we do not have this salesperson");
+			die( "We do not have a salesperson with ID: $salesperson_ID");
 		}
+		
+$get_storeID="select store_ID from employee where employee_ID='$salesperson_ID'";
+    $st_ID=mysql_query($get_storeID, $conn);
+	$store_ID = mysql_result($st_ID, 0);
 
 $systemdate=DATE("Y/m/d");
 
@@ -129,6 +133,7 @@ foreach ($arr as $a) {
 	{
 	mysql_query("INSERT INTO transaction(transaction_ID,salesperson,customer_ID,date) VALUES ($transaction_insert,'$salesperson_ID','$customer_ID','$systemdate')");
     mysql_query("INSERT INTO buy(buy_ID,transaction_ID,product_ID,price_paid,quantity) VALUES ($buy_insert,$transaction_insert,'$Product_in_cart_ID','$price_transaction','$Product_in_cart_num')");
+	mysql_query("UPDATE inventory_amount SET inventory_amt=inventory_amt-$Product_in_cart_num WHERE product_ID ='$Product_in_cart_ID' AND store_ID='$store_ID'");
     }
 }
 
@@ -141,7 +146,7 @@ if($total_money==0)
 }
 if($total_money!=0)
 {
-	echo "You ordered $total_items items for $total_money dollars";
+	echo "You ordered $total_items items for $total_money dollars from store $store_ID and salesperson $salesperson_ID";
     echo "<P><a href='index.html'>Back to homepage</a></p>";
 }
 
